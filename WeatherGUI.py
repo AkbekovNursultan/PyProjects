@@ -1,20 +1,19 @@
 import tkinter as tk
+import requests
+from PIL import Image, ImageTk
 
-root = tk.Tk()
+app = tk.Tk()
 
-canvas = tk.Canvas(root, height = 600, width = 600)
-canvas.pack()
+HEIGHT = 500
+WIDTH = 600
 
-frame = tk.Frame(root, bg = 'gold')
-frame.place(relx = 0, rely = 0, relwidth = 0.5, relheight = 0.5)
-
-button = tk.Button(frame, text = 'Wow', bg = 'cyan', fg = 'pink')
-button.pack()
-
-label = tk.Label(frame, text = 'Sus', bg = 'yellow')
-label.pack()
-
-entry = tk.Entry(frame, bg = 'lime')
-entry.pack()
-
-root.mainloop()
+def format_response(weather_json):
+    try:
+        city = weather_json['name']
+        conditions = weather_json['weather'][0]['description']
+        temp = weather_json['main']['temp']
+        final_str = 'City: %s \nConditions: %s \nTemperature (°C): %s' % (city, conditions, temp)
+    except:
+        final_str = 'There was a problem retrieving that information'
+    #final_str = 'hello'
+    return final_str
