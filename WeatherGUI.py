@@ -29,3 +29,18 @@ def get_weather(city):
 
     icon_name = weather_json['weather'][0]['icon']
     open_image(icon_name)
+
+    def open_image(icon):
+        size = int(lower_frame.winfo_height() * 0.25)
+        img = ImageTk.PhotoImage(Image.open('./img/' + icon + '.png').resize((size, size)))
+        weather_icon.delete("all")
+        weather_icon.create_image(0, 0, anchor='nw', image=img)
+        weather_icon.image = img
+
+    C = tk.Canvas(app, height=HEIGHT, width=WIDTH)
+    background_image = tk.PhotoImage(file='./landscape.png')
+    background_label = tk.Label(app, image=background_image)
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+    C.pack()
+
