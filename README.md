@@ -1,8 +1,8 @@
-How to use this program?
+    How to use this program?
 
 Step 1. 
 install Python libraries:
-pip install requests
+   pip install requests
 pip install Pillow
 
 Step 2.
